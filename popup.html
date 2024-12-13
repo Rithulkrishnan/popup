@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Popup</title>
     <style>
-        /* Basic reset */
+        /* Prevent scrolling */
         body, html {
             margin: 0;
             padding: 0;
+            overflow: hidden;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Prevent scrolling */
         }
         /* Fullscreen overlay */
         #popupOverlay {
@@ -20,32 +20,31 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Ensures it is above all other content */
+            z-index: 9999;
         }
         /* Popup container */
         #popup {
             background: white;
-            padding: 20px;
             border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
             max-width: 90%;
             max-height: 90%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            overflow: auto; /* Allow scrolling inside if content overflows */
+            overflow: auto; /* Scroll content if too large */
         }
         /* Image styling */
         #popup img {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border-radius: 10px;
         }
         /* Close button */
         #closePopup {
-            display: block;
             margin-top: 10px;
             padding: 10px 20px;
             background: red;
@@ -66,7 +65,7 @@
     </div>
 
     <script>
-        // Close the popup when the button is clicked
+        // Close popup
         document.getElementById('closePopup').addEventListener('click', function() {
             document.getElementById('popupOverlay').style.display = 'none';
         });
