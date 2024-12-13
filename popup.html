@@ -11,8 +11,9 @@
             padding: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden; /* Prevent scrolling */
         }
-        /* Overlay styles */
+        /* Fullscreen overlay */
         #popupOverlay {
             position: fixed;
             top: 0;
@@ -23,7 +24,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Ensures it is above all other elements */
+            z-index: 9999; /* Ensures it is above all other content */
         }
         /* Popup container */
         #popup {
@@ -31,8 +32,10 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            max-width: 80%;
+            max-width: 90%;
+            max-height: 90%;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            overflow: auto; /* Allow scrolling inside if content overflows */
         }
         /* Image styling */
         #popup img {
@@ -50,6 +53,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
     </style>
 </head>
