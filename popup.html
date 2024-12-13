@@ -3,60 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popup Overlay</title>
+    <title>Popup</title>
     <style>
-        /* Full-screen overlay style */
+        /* Prevent scrolling on the main page */
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Overlay styles */
         #popupOverlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10000; /* Ensures it overlays on top */
+            z-index: 9999;
         }
 
-        /* Close button style */
-        .popup-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            background-color: red;
-            border: none;
-            padding: 10px 15px;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 50%;
-        }
-
-        /* Iframe (popup content) style */
-        .popup-content {
-            width: 80%;
-            height: 80%;
-            border: none;
+        /* Popup container */
+        #popup {
+            position: relative;
+            background: white;
             border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 0;
+        }
+
+        /* Image styling */
+        #popup img {
+            max-width: 100%;
+            max-height: 100vh; /* Ensures the image fits within the viewport height */
+            border-radius: 10px;
+        }
+
+        /* Close button styling */
+        #closePopup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red; /* Red background */
+            color: white; /* White text */
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        #closePopup:hover {
+            background-color: darkred; /* Darker red on hover */
         }
     </style>
 </head>
 <body>
-    <!-- Full-screen popup overlay -->
     <div id="popupOverlay">
-        <button class="popup-close" onclick="closePopup()">X</button>
-        <iframe class="popup-content" src="https://raw.githubusercontent.com/Rithulkrishnan/popup/main/Care%20Poster%202-01.jpg"></iframe>
+        <div id="popup">
+            <button id="closePopup">Close</button> <!-- Close button with rectangle and bold white text -->
+            <img src="https://raw.githubusercontent.com/Rithulkrishnan/popup/main/Care%20Poster%202-01.jpg" alt="Popup Image">
+        </div>
     </div>
 
     <script>
-        // Function to close the popup
-        function closePopup() {
+        // Close popup
+        document.getElementById('closePopup').addEventListener('click', function() {
             document.getElementById('popupOverlay').style.display = 'none';
-        }
-
-        // Optional: Close the popup after 5 seconds
-        setTimeout(closePopup, 15000); // Closes after 5 seconds (adjust as needed)
+        });
     </script>
 </body>
 </html>
