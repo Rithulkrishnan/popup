@@ -30,11 +30,12 @@
 
         /* Popup container */
         #popup {
+            position: relative;
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            padding: 10px;
+            padding: 0;
         }
 
         /* Image styling */
@@ -44,24 +45,30 @@
             border-radius: 10px;
         }
 
-        /* Close button */
+        /* Close button styling */
         #closePopup {
-            margin-top: 10px;
-            padding: 10px 20px;
-            background: red;
-            color: white;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            color: black;
             border: none;
-            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 16px;
+            z-index: 10000;
+        }
+
+        #closePopup:hover {
+            color: red;
         }
     </style>
 </head>
 <body>
     <div id="popupOverlay">
         <div id="popup">
+            <button id="closePopup">&times;</button> <!-- Close button -->
             <img src="https://raw.githubusercontent.com/Rithulkrishnan/popup/main/Care%20Poster%202-01.jpg" alt="Popup Image">
-            <button id="closePopup">Close</button>
         </div>
     </div>
 
